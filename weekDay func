@@ -1,0 +1,53 @@
+/*
+Функция которая принимает день недели (число) и выводит сообщение с названием дня недели и его видом (выходной или рабочий)
+Допустимые числа: от 1 до 7 (включительно), иначе возвращать false и выводить ошибку.
+*/
+
+function weekDay(dayNumber) {
+    // Ошибка ввода
+    if (dayNumber <= 0 || dayNumber >= 8) {
+        return "Ошибка ввода";
+    }
+
+    // Название дня 
+    let dayName;
+    if (dayNumber === 1) {
+        dayName = "monday";
+    } else if (dayNumber === 2) {
+        dayName = "tuesday";
+    } else if (dayNumber === 3) {
+        dayName = "wednesday";
+    } else if (dayNumber === 4) {
+        dayName = "thursday";
+    } else if (dayNumber === 5) {
+        dayName = "friday";
+    } else if (dayNumber === 6) {
+        dayName = "saturday";
+    } else if (dayNumber === 7) {
+        dayName = "sunday";
+    }
+
+    // Тип дня
+    let dayType;
+    if (dayNumber === 1 || dayNumber <= 5) {
+        dayType = "working day";
+    } else if (dayNumber === 6 || dayNumber === 7) {
+        dayType = "day-off";
+    }
+
+    // Сообщение для пользователя
+    let message = "Today is " + dayName + ", " + dayType + "!";
+    return message;
+}
+
+console.log(
+    '\n',
+    weekDay(1), // "Today is monday, working day"
+    '\n',
+    weekDay(7), // "Today is sunday, day-off"
+    '\n',
+    weekDay(10), // "Ошибка ввода"
+    '\n',
+    weekDay(4), // " Today is thursday, working day"
+    '\n',
+);
